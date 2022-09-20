@@ -19,7 +19,6 @@ if(prevData)
 }
 
 let displayTasks = ()=>{
-    //console.log(displayItems)
     document.getElementById("ul").innerHTML=""
     if(displayItems.length>0){
         displayItems.map((item)=>{
@@ -39,14 +38,11 @@ let displayTasks = ()=>{
     No tasks!
     </div>
     `}
-
-
 }
 
 let fetchTasks=()=>{
         let tod=document.getElementById('dateInput').value
         let tr=JSON.parse(localStorage.getItem("pendingTasks"))
-       // console.log(tr)
         displayItems=[]
         tr.forEach((element) => {
                 if(element.date===tod)
@@ -55,14 +51,7 @@ let fetchTasks=()=>{
                 )
 
         })    
-       // console.log(tr)
-
-      //  localStorage.setItem("pendingTasks",JSON.stringify(tr))
-
-        //console.log(displayItems    )
-        displayTasks()
-       
-    
+        displayTasks()  
 }
 
 

@@ -1,18 +1,19 @@
 let user=JSON.parse(localStorage.getItem("user"))
-if(user)
-{
-    console.log("hi")
-}
-else{  
-    user=  prompt("Enter user name")
+    //to get input of user name
     if(user)
-    localStorage.setItem("user",JSON.stringify(user))
-    else{
-        while(!user)
-         user =  prompt("Enter user name")
+    {
+        console.log("hi")
     }
-    localStorage.setItem("user",JSON.stringify(user))
-}
+    else{  
+        user=  prompt("Enter user name")
+        if(user)
+        localStorage.setItem("user",JSON.stringify(user))
+        else{
+            while(!user)
+            user =  prompt("Enter user name")
+        }
+        localStorage.setItem("user",JSON.stringify(user))
+    }
 
 let date = new Date()
 const offset = date.getTimezoneOffset()
@@ -23,6 +24,7 @@ let taskDetails=[]
 let todTaskDetails=[]
 let displayItems=[]
 
+//fetching data from previously stored arrays in local storage
 let prevData=JSON.parse(localStorage.getItem("pendingTasks"))
 let todData=JSON.parse(localStorage.getItem("todaysTasks"))
 if(prevData)
@@ -35,6 +37,8 @@ if(todData)
     todTaskDetails=todData
     
 }
+
+//display tasks in tasks list area
 let displayTasks = ()=>{
     console.log(displayItems)
     document.getElementById("ul").innerHTML=""
@@ -60,6 +64,7 @@ let displayTasks = ()=>{
 
 }
 
+//fetching tasks from localstorage
 let fetchTasks=(tod)=>{
     let tr1=JSON.parse(localStorage.getItem("todaysTasks"))
     if(tr1)
@@ -75,7 +80,6 @@ let fetchTasks=(tod)=>{
     else{
     let count=0
         let tr=JSON.parse(localStorage.getItem("pendingTasks"))
-       // console.log(tr)
         displayItems=[]
         tr.forEach((element) => {
             if(element.date===tod)
@@ -88,18 +92,15 @@ let fetchTasks=(tod)=>{
             }
         })    
         tr.splice(0,count)
-       // console.log(tr)
 
         localStorage.setItem("pendingTasks",JSON.stringify(tr))
 
-        //console.log(displayItems    )
         displayTasks()
         count=0
     }
 }
-window.addEventListener('load',()=>{
-    fetchTasks(today)
-})
+
+//function to display date, time and welcome message
 let displayTime=()=>{
     let date = new Date()
     let curDate=date.getDate()
@@ -171,7 +172,6 @@ let displayTime=()=>{
 let pushTask=(dateSelected, taskInput)=>{
     if(dateSelected===today)
     {
-        //let tr2=JSON.parse( localStorage.getItem("todaysTasks"))
         todTaskDetails.push({
             date:dateSelected,
             task:taskInput
@@ -213,4 +213,5 @@ let handleAddTask=()=>{
 }
 
 displayTime()
+
 
