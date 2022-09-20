@@ -171,7 +171,7 @@ let displayTime=()=>{
      setTimeout(displayTime, 1000);
 }
 
-
+//push added task into pending tasks or today's tasks
 let pushTask=(dateSelected, taskInput)=>{
     if(dateSelected===today)
     {
@@ -197,7 +197,7 @@ let pushTask=(dateSelected, taskInput)=>{
 }
 
 
-
+//add new task
 let handleAddTask=()=>{
     let taskInput=document.getElementById('newTaskInput').value
     let dateSelected=document.getElementById('dateInput').value
