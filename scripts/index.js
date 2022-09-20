@@ -99,7 +99,10 @@ let fetchTasks=(tod)=>{
         count=0
     }
 }
-
+//window trigerring functions
+window.onload=()=>{
+fetchTasks(today)
+}
 //function to display date, time and welcome message
 let displayTime=()=>{
     let date = new Date()
@@ -203,7 +206,7 @@ let handleAddTask=()=>{
     else if(dateSelected==="")
     alert("Enter valid date")
     else
-    { pushTask(dateSelected, taskInput)
+    { pushTask(dateSelected, taskInput) 
         alert("Task added successfully!")
         document.getElementById('newTaskInput').value=""
         document.getElementById('dateInput').value=today

@@ -8,6 +8,7 @@ html,body{
     color: white;
     background-size: cover; 
     transition: all ease 2s;
+    height: 100vh;
 }
 a{
     border: 1px solid #F2F2F2;
